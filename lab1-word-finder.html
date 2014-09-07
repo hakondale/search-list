@@ -13,34 +13,23 @@
 <!-- Aktuelle Javascript biblioteker laste inn her -->
 <!-- Last inn en versjon av jquery her -->
 <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="lab1-words-small.json"></script>
+<!--<script type="text/javascript" src="lab1-words-small.json"></script> -->
 
 <!-- Fjern kommentarmarkering her hvis du ønsker en større ordbok på 45,407 ord
 <script type="text/javascript" src="lab1-words-large.json"></script>
  -->
-
+<script type="text/javascript" src="lab1-words-large.json"></script>
 <script type="text/javascript" src="lab1-dictionary.js"></script>
 
 <script type="text/javascript">
-// <![CDATA[
-
-// Here er en "hack" for å kunne tvinge denne delen av JavaScript koden å kjøre
-// etter at resten av siden er ferdig lastet i din nettleser.
-$(document).ready(function() {
-	var dict = new Dictionary(words);
-	// Din kode kan skrives her
+    var dict = new Dictionary(words);
     var wordsArray = words;
     
-    $( "#searchInput" ).keypress(function() {
-        var searchInput = $("#searchInput").val();
-        
-        console.log(dict.search($("#searchInput").val()));
-        
-        wordsArray = dict.search($("#searchInput").val());
-        
-        var numberWordsDiv = document.getElementById("numberWords");
-        numberWordsDiv.innerHTML = words.length + " words total";
-
+    function empty(){
+        location.reload();
+    }
+    
+    function writeWords(wordsArray){
         var optionsString = '<select size="15" width="15" style="width: 200px">';
 
         for(var i = 0; i < wordsArray.length; i++){
@@ -49,8 +38,31 @@ $(document).ready(function() {
             optionsString += "</option>";
         }
         optionsString += "</select>";
+        if(wordsArray.length == 0){
+            optionsString = "0 ord som inneholder " + $( "#searchInput" ).val();
+        }
         var wordsBoxDiv = document.getElementById("wordBox");
         wordsBoxDiv.innerHTML = optionsString;
+    }
+    
+// <![CDATA[
+
+// Here er en "hack" for å kunne tvinge denne delen av JavaScript koden å kjøre
+// etter at resten av siden er ferdig lastet i din nettleser.
+$(document).ready(function() {
+	
+	// Din kode kan skrives her
+    var numberWordsDiv = document.getElementById("numberWords");
+        numberWordsDiv.innerHTML = words.length + " words total";
+    
+    writeWords(wordsArray);
+    
+    $( "#searchInput" ).keyup(function() {
+        var searchInput = $("#searchInput").val();
+        
+        wordsArray = dict.search(searchInput);
+
+        writeWords(wordsArray);
         }); 
 });
 
@@ -75,7 +87,7 @@ html {
 <!-- Din HTML skrives her -->
 <form id="searchForm">
 Søk etter: <input type="text" id="searchInput">
-    <input type="button" value="Tømme alt" onclick="search();">
+    <input type="button" value="Tømme alt" onclick="empty();">
     <div id="numberWords"></div>
     
 <div id="wordBox"></div>
