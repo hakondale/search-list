@@ -29,7 +29,29 @@
 $(document).ready(function() {
 	var dict = new Dictionary(words);
 	// Din kode kan skrives her
+    var wordsArray = words;
+    
+    $( "#searchInput" ).keypress(function() {
+        var searchInput = $("#searchInput").val();
+        
+        console.log(dict.search($("#searchInput").val()));
+        
+        wordsArray = dict.search($("#searchInput").val());
+        
+        var numberWordsDiv = document.getElementById("numberWords");
+        numberWordsDiv.innerHTML = words.length + " words total";
 
+        var optionsString = '<select size="15" width="15" style="width: 200px">';
+
+        for(var i = 0; i < wordsArray.length; i++){
+            optionsString += "<option>";
+            optionsString += wordsArray[i];
+            optionsString += "</option>";
+        }
+        optionsString += "</select>";
+        var wordsBoxDiv = document.getElementById("wordBox");
+        wordsBoxDiv.innerHTML = optionsString;
+        }); 
 });
 
 // ]]>
@@ -51,7 +73,16 @@ html {
 </head>
 <body>
 <!-- Din HTML skrives her -->
+<form id="searchForm">
+Søk etter: <input type="text" id="searchInput">
+    <input type="button" value="Tømme alt" onclick="search();">
+    <div id="numberWords"></div>
+    
+<div id="wordBox"></div>
+    
 
-
+</form>
+    
+    
 </body>
 </html>
