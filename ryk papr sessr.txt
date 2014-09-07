@@ -1,0 +1,64 @@
+var userChoice = prompt("Do you choose rock, paper or scissors?");
+var computerChoice = Math.random();
+if (computerChoice < 0.34) {
+	computerChoice = "rock";
+} else if(computerChoice <= 0.67) {
+	computerChoice = "paper";
+} else {
+	computerChoice = "scissors";
+} 
+
+var weaponMessage;
+if(userChoice === "rock"){
+    weaponMessage = "You threw a rock at the computer!";
+}
+else if(userChoice === "paper"){
+    weaponMessage = "You throw a paper air plane at the computer!";
+}
+else{
+    weaponMessage = "You stab the computer with a scissor!";
+}
+ 
+console.log(weaponMessage);
+
+var compare = function(choice1, choice2){
+    if( choice1 === choice2){
+        return "The result is a tie!";
+    }
+    
+    else if( choice1 === "rock"){
+        
+        if( choice2 === "scissors" ){
+            return "The computer tried to defend itself with a scissor, but the rock smashed through it, and you stand victorious";
+        }
+        else{
+            return "The computer covered your rock in paper. You shamefully admit defeat to your supperior";
+        }
+    }
+    
+    else if( choice1 === "paper"){
+        
+        if( choice2 === "rock"){
+           return "Just like the deathstar, the computer has an obligatory weak spot. It tries throwing rocks at the paper air plane, but it graceously avoids them all and flies inside the computer fan causing it to blow up. The force is strong with you.";
+        }
+        else{
+            return "You really think a stupid paper could destroy this machine? The computer extends it's secret scissor weapon and cuts your pathetic paper to shreds.";
+        }
+    }
+    
+    else if( choice1 === "scissors"){
+        
+        if( choice2 === "paper"){
+            return "Paper can't help you now computer. Your scissor cuts through through the paper, into the hard-drive and computer-juice gushes everywhere. You did good, son.";
+        }
+        else{
+            return "The computer smashes your scissor with a rock. You are lucky you only left the fight with a few broken fingers. The computer swaggers as you cower away";
+        }
+    }
+}
+
+compare(userChoice, computerChoice);
+
+
+
+var userChoice = prompt("Do you choose rock, paper or scissors?");var computerChoice = Math.random();if (computerChoice < 0.34) {computerChoice = "rock";}else if(computerChoice <= 0.67) {computerChoice = "paper";} else {computerChoice = "scissors";}var weaponMessage;if(userChoice === "rock"){weaponMessage = "You threw a rock at the computer!";}else if(userChoice === "paper"){weaponMessage = "You throw a paper air plane at the computer!";}else{weaponMessage = "You stab the computer with a scissor!";}console.log(weaponMessage);var compare = function(choice1, choice2){if( choice1 === choice2){return "The result is a tie!";}else if( choice1 === "rock"){if( choice2 === "scissors" ){return "The computer tried to defend itself with a scissor, but the rock smashed through it, and you stand victorious";}else{return "The computer covered your rock in paper. You shamefully admit defeat to your supperior";}}else if( choice1 === "paper"){if( choice2 === "rock"){return "Just like the deathstar, the computer has an obligatory weak spot. It tries throwing rocks at the paper air plane, but it graceously avoids them all and flies inside the computer fan causing it to blow up. The force is strong with you.";}else{return "You really think a stupid paper could destroy this machine? The computer extends it's secret scissor weapon and cuts your pathetic paper to shreds.";}}else if( choice1 === "scissors"){if( choice2 === "paper"){return "Paper can't help you now computer. Your scissor cuts through through the paper, into the hard-drive and computer-juice gushes everywhere. You did good, son.";}else{return "The computer smashes your scissor with a rock. You are lucky you only left the fight with a few broken fingers. The computer swaggers as you cower away"; }}} compare(userChoice, computerChoice);

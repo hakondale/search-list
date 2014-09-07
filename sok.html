@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+	<script type="text/javascript">
+    	function printvalues() {
+        	var div = document.getElementById("divId");
+        	div.innerHTML += form.searchword.value;
+    	}
+	</script>
+	</head>
+	<form name="form">
+    Search for:	<p> <input name="searchword" type="text" />
+    	<input type="button" value="Empty" onclick =" printvalues();"> 
+	</form>
+	<div id="divId"> </div>
+	
+	<SCRIPT LANGUAGE="JavaScript">
+	var totalWords = words.length;
+	function processOrder() {
+		return totalWords;
+	}
+	</SCRIPT>
+
+	<p>
+	<script>  words total<br>
+		<select name="sometext" size="5, 5	">
+		<option> "??????" </option>
+		</select>
+	</p>
+
+<!--
+
+
+<script>
+var myArray2 = jQuery.parseJSON($('select[name="tablename"]').val());
+</script>
+-->
+</html>
+
